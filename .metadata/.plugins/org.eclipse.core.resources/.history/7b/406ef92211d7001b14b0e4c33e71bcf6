@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="82864fee-dc5f-4d80-b79b-725461a2c11a" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="7c79992e-b4a3-4c8e-8d91-03e73a85c27d" >
+		<http:request-connection host="localhost" port="8081" />
+	</http:request-config>
+	<flow name="helloFlow" doc:id="1505dbbf-59e3-4208-9a64-4af984e47012" >
+		<http:listener doc:name="GET /hello" doc:id="36f379a6-f074-478b-b4ff-f65ebcda4953" config-ref="HTTP_Listener_config" path="/hello" allowedMethods="GET">
+			<http:response reasonPhrase="Success" >
+				<http:headers ><![CDATA[#[output application/java
+---
+{
+	"name" : "vars.firstName"
+}]]]></http:headers>
+			</http:response>
+		</http:listener>
+		<set-variable value="#[message.attributes.queryParams.Fname]" doc:name="firstName" doc:id="aca4c029-8f83-410b-93e6-4215fb7d9549" variableName="firstName"/>
+		<set-payload value="Hello" doc:name="Hello" doc:id="eb97ae73-a607-4b5c-876b-a74dca5b3d28" />
+		<http:request method="GET" doc:name="GET /goodbye" doc:id="8a5f4b43-43b6-4bef-b118-89374f314b32" config-ref="HTTP_Request_configuration" path="/goodbye" responseTimeout="300000">
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	"fullName" : "Max"
+}]]]></http:query-params>
+		</http:request>
+		<logger level="INFO" doc:name="payload" doc:id="6cab5727-7e73-46e6-a011-2a0db46a9f20" message="#['\nMessage: ' ++ payload]"/>
+	</flow>
+	<flow name="goodbyeFlow" doc:id="8d008bbd-cf65-4a0d-a5b0-c68ac8a00fd8" >
+		<http:listener doc:name="GET /goodbye" doc:id="13e497ff-1db8-4660-811d-639893660009" config-ref="HTTP_Listener_config" path="/goodbye" allowedMethods="GET"/>
+		<set-payload value="#[upper('Goodbye') ++ ' ' ++ (attributes.queryParams.fullName default 'Maxine')]" doc:name="Goodbye" doc:id="ea231417-f095-416c-8fe9-f48b1f5ed1a3" />
+		<logger level="INFO" doc:name="fullName" doc:id="6871707c-73e4-4b07-b8c5-59a31933e554" message="attributes.queryParams.fullName"/>
+	</flow>
+</mule>

@@ -1,0 +1,7 @@
+authenticated.users=[{"id"\:"838e9541-909f-4272-838a-1aea9eb6e474","token"\:"cd9998ed-8102-4078-9c60-a909c9a11cda","userId"\:"shalu1499","email"\:"shalinisha1499@gmail.com","refreshToken"\:"","baseUrl"\:"https\://anypoint.mulesoft.com/","org"\:{"name"\:"NJCLABS","id"\:"485f938b-a72f-41f7-be15-573bef2448dc","isMaster"\:true}}]
+current.token=cd9998ed-8102-4078-9c60-a909c9a11cda
+current.user=shalu1499
+eclipse.preferences.version=1
+expiration.time=15
+org.mule.tooling.amc.apps={"userProjectMap"\:{"shalinisha1499"\:{"training4-american-ws"\:"{\\"applicationName\\"\:\\"training4-american-ws-sha\\",\\"muleRuntime\\"\:\\"4.3.0\\",\\"properties\\"\:{}}"},"shalini1499"\:{"training4-american-ws"\:"{\\"applicationName\\"\:\\"training4-american-ws-shalini\\",\\"muleRuntime\\"\:\\"4.3.0\\",\\"properties\\"\:{}}"},"shalu1499"\:{"training4-american-ws"\:"{\\"applicationName\\"\:\\"training4-american-ws-sha\\",\\"muleRuntime\\"\:\\"4.3.0\\",\\"properties\\"\:{}}"}}}
+org.mule.tooling.ui.properties.enable.api.dependencies=true

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="APISearchPage">
+		<item key="CASE_SENSITIVE" value="false"/>
+		<item key="REG_EX_SEARCH" value="false"/>
+		<item key="WHOLE_WORD" value="false"/>
+		<item key="SEARCH_API_DEPENDENCIES" value="true"/>
+		<item key="SEARCH_LOCAL_APIS" value="true"/>
+		<item key="HISTORY_SIZE" value="0"/>
+		<section name="EXTENSIONS">
+			<item key="0" value="*"/>
+		</section>
+	</section>
+</section>
